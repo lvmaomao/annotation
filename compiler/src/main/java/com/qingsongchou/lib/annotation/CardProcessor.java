@@ -11,6 +11,7 @@ import com.squareup.javapoet.TypeSpec;
 import com.squareup.javapoet.WildcardTypeName;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -80,12 +81,27 @@ public class CardProcessor extends AbstractProcessor {
 
         ParameterizedTypeName mapTypeName = ParameterizedTypeName
                 .get(ClassName.get(Map.class), ClassName.get(String.class), ParameterizedTypeName.get(ClassName.get(Class.class), WildcardTypeName.subtypeOf(ClassName.get(activityType))));
-        ParameterSpec mapParameterSpec = ParameterSpec.builder(mapTypeName, "router")
+
+
+        ParameterizedTypeName cardNameListTypeName = ParameterizedTypeName
+                .get(ClassName.get(List.class), ClassName.get(String.class));
+
+        ParameterizedTypeName providerNameListTypeName = ParameterizedTypeName
+                .get(ClassName.get(List.class), ClassName.get(String.class));
+
+
+        ParameterSpec cardNameListParameterSpec = ParameterSpec.builder(cardNameListTypeName, "cardNameList")
                 .build();
+
+        ParameterSpec providerNameListParameterSpec = ParameterSpec.builder(providerNameListTypeName, "providerNameList")
+                .build();
+
         MethodSpec.Builder routerInitBuilder = MethodSpec.methodBuilder("initRouterTable")
                 .addAnnotation(Override.class)
                 .addModifiers(Modifier.PUBLIC)
-                .addParameter(mapParameterSpec);
+                .addParameter(cardNameListParameterSpec)
+                .addParameter(providerNameListParameterSpec);
+
         for (Element element : elements) {
             CardMap router = element.getAnnotation(CardMap.class);
             AnnotationMirror annotationMirror = getAnnotationMirror(element, CardMap.class);
@@ -93,7 +109,9 @@ public class CardProcessor extends AbstractProcessor {
             String s = arr[1];
             System.out.println("aaaaaaaa" + s.substring(0, s.lastIndexOf(".")));
 
-          routerInitBuilder.addStatement("router.put($S, $T.class)", s.substring(0, s.lastIndexOf(".")), ClassName.get((TypeElement) element));
+//            routerInitBuilder.addStatement("router.put($S, $T.class)", s.substring(0, s.lastIndexOf(".")), ClassName.get((TypeElement) element));
+            routerInitBuilder.addStatement("cardNameList.add($S)", s.substring(0, s.lastIndexOf(".")));
+            routerInitBuilder.addStatement("providerNameList.add($S)", (ClassName.get((TypeElement) element)).packageName());
 
         }
         MethodSpec routerInitMethod = routerInitBuilder.build();
