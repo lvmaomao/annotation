@@ -1,5 +1,5 @@
 apply plugin: 'java'
-
+group='anotation.library.qingsongchou.com.annotationlib'
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }

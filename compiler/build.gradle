@@ -1,4 +1,5 @@
 apply plugin: 'java'
+group='anotation.library.qingsongchou.com.annotationlib'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
