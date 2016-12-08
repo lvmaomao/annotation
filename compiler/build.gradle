@@ -1,7 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'maven'
 
-group='anotation.library.qingsongchou.com.annotationlib'
+group='com.github.lvmaomao'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
