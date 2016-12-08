@@ -5,7 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/AnnotationLib.iml" filepath="$PROJECT_DIR$/AnnotationLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/annotation/annotation.iml" filepath="$PROJECT_DIR$/annotation/annotation.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cardlib/cardlib.iml" filepath="$PROJECT_DIR$/cardlib/cardlib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cardlib2/cardlib2.iml" filepath="$PROJECT_DIR$/cardlib2/cardlib2.iml" />
       <module fileurl="file://$PROJECT_DIR$/compiler/compiler.iml" filepath="$PROJECT_DIR$/compiler/compiler.iml" />
     </modules>
   </component>
