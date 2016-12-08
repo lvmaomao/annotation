@@ -31,5 +31,5 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:24.2.1'
     testCompile 'junit:junit:4.12'
-    compile ':annotation'
+    compile project(':annotation')
 }
