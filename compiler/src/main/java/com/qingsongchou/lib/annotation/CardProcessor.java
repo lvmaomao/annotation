@@ -111,7 +111,8 @@ public class CardProcessor extends AbstractProcessor {
 
 //            routerInitBuilder.addStatement("router.put($S, $T.class)", s.substring(0, s.lastIndexOf(".")), ClassName.get((TypeElement) element));
             routerInitBuilder.addStatement("cardNameList.add($S)", s.substring(0, s.lastIndexOf(".")));
-            routerInitBuilder.addStatement("providerNameList.add($S)", (ClassName.get((TypeElement) element)).packageName());
+            ClassName clazz = ClassName.get((TypeElement) element);
+            routerInitBuilder.addStatement("providerNameList.add($S)", clazz.packageName() + "." + clazz.simpleName());
 
         }
         MethodSpec routerInitMethod = routerInitBuilder.build();
